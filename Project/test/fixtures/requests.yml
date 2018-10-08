@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2018-10-07 21:32:39
+  location: MyString
+  neighbourhood: one
+  service_area: one
+  service_request: one
+
+two:
+  date: 2018-10-07 21:32:39
+  location: MyString
+  neighbourhood: two
+  service_area: two
+  service_request: two
