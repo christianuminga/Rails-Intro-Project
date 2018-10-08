@@ -10,9 +10,10 @@ require 'net/http'
 require 'json'
 require 'pp'
 
-Ticket.destroy_all
-Violation.destroy_all
-Street.destroy_all
+Request.destroy_all
+Neighbourhood.destroy_all
+ServiceArea.destroy_all
+ServiceRequest.destroy_all
 
 url = 'https://data.winnipeg.ca/resource/9w2n-uhf9.json?'
 uri = URI(url)
@@ -22,23 +23,29 @@ parsed = JSON.parse(response)
 
 parsed.each do |c|
 
-    street = c['street']
-    violation = c['violation']
-
-    Street.create(street: street)
-    Violation.create(violation: violation)
+    neighbourhood = c['neighbourhood']
+    service_area = c['service_area']
+    service_request = c['service_request']
+    
+    Neighbourhood.create(name: neighbourhood)
+    ServiceArea.create(name: service_area)
+    ServiceRequest.create(name: service_request)
 
 end
 
 parsed.each do |b|
-    street = Street.where(:street => b['street']).first
-    violation = Violation.where(:violation => b['violation']).first
+    neighbourhood = Neighbourhood.where(:name => b['neighbourhood']).first
+    service_area = ServiceArea.where(:name => b['service_area']).first
+    service_request = ServiceRequest.where(:name => b['service_request']).first
 
-    Ticket.create(issue_date: b['issue_date'], ticket_number: b['ticket_number'],
-                  street: street, violation: violation)
+    Request.create(date: b['sr_date'], location: b['location_1']['coordinates'],
+                   neighbourhood: neighbourhood, service_area: service_area, service_request: service_request)
 
 end
 
-puts " - There are #{Street.count} streets."
-puts " - There are #{Violation.count} violations."
-puts " - There are #{Ticket.count} tickets."
+puts " - There are #{Neighbourhood.count} neighbourhoods."
+puts " - There are #{ServiceArea.count} service areas."
+puts " - There are #{ServiceRequest.count} service requests."
+puts " - There are #{Request.count} requests."
+
+
