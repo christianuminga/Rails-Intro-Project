@@ -3,7 +3,7 @@ class SearchController < ApplicationController
   end
 
   def results
-    @requests = Request.where('service_area_id LIKE ?', "%#{params[:q]}%")
+    @requests = Request.where('name LIKE ?', "%#{params[:q]}%")
 
   end
 end

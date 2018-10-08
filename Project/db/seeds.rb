@@ -34,11 +34,12 @@ parsed.each do |c|
 end
 
 parsed.each do |b|
+    name = b['service_request'] + " @ " + b['neighbourhood'] 
     neighbourhood = Neighbourhood.where(:name => b['neighbourhood']).first
     service_area = ServiceArea.where(:name => b['service_area']).first
     service_request = ServiceRequest.where(:name => b['service_request']).first
 
-    Request.create(date: b['sr_date'], location: b['location_1']['coordinates'].to_s.tr('[]', ''),
+    Request.create(name: name, date: b['sr_date'], location: b['location_1']['coordinates'].to_s.tr('[]', ''),
                    neighbourhood: neighbourhood, service_area: service_area, service_request: service_request)
 
 end

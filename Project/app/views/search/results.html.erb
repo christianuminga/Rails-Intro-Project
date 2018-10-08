@@ -5,7 +5,9 @@
 <% else%>
 <ul>
 <% @requests.each do |request|%>
-    <li><%= link_to request.date, request%> </li>
+    <li><%= link_to request.date, request%>
+        <%= request.service_request.name %> @
+        <%= request.neighbourhood.name%> </li>
 <%end%>
 </ul>
 <%end%>
