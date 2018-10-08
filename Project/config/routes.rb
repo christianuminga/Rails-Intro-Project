@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  
-  get 'requests/index'
-  get 'requests/show'
+
+
   resources :requests, only: [:index, :show]
 
+  root to: 'requests#index'
 
   # get 'request/index'
   # get 'request/show'

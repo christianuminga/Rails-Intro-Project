@@ -38,7 +38,7 @@ parsed.each do |b|
     service_area = ServiceArea.where(:name => b['service_area']).first
     service_request = ServiceRequest.where(:name => b['service_request']).first
 
-    Request.create(date: b['sr_date'], location: b['location_1']['coordinates'],
+    Request.create(date: b['sr_date'], location: b['location_1']['coordinates'].to_s.tr('[]', ''),
                    neighbourhood: neighbourhood, service_area: service_area, service_request: service_request)
 
 end

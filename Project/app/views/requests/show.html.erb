@@ -1,2 +1,5 @@
-<h1>Requests#show</h1>
-<p>Find me in app/views/requests/show.html.erb</p>
+<h2><%= @request.service_request.name %> @ <%= @request.neighbourhood.name %> on <%= @request.date %> </h2>
+
+<img src= "<%= "https://maps.googleapis.com/maps/api/staticmap?center="+@request.location[17,32] + "," + @request.location[0,15] + "&zoom=16&scale=1&size=600x500&maptype=
+                roadmap&key=AIzaSyAGlhAJ0CxmZhtlzi8b59coZsLE76tuCRo&q&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:
+                %7C"+@request.location[17,32] + ",+" + @request.location[0,15] %>" > 
