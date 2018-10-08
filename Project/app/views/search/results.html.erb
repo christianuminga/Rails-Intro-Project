@@ -1,0 +1,11 @@
+<h2>Requests Found: <%@requests.size%></h2>
+
+<% if @requests.empty?%>
+    <p>Sorry, no requests found </p>
+<% else%>
+<ul>
+<% @requests.each do |request|%>
+    <li><%= link_to request.date, request%> </li>
+<%end%>
+</ul>
+<%end%>
