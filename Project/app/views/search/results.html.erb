@@ -3,11 +3,17 @@
 <% if @requests.empty?%>
     <p>Sorry, no requests found </p>
 <% else%>
+<%= paginate @requests%>
+
 <ul>
+
 <% @requests.each do |request|%>
     <li><%= link_to request.date, request%>
         <%= request.service_request.name %> @
         <%= request.neighbourhood.name%> </li>
 <%end%>
 </ul>
+
+<%= paginate @requests%>
+
 <%end%>

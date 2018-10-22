@@ -3,7 +3,7 @@ class SearchController < ApplicationController
   end
 
   def results
-    @requests = Request.where('name LIKE ?', "%#{params[:q]}%")
+    @requests = Request.where('name LIKE ?', "%#{params[:q]}%").page(params[:page])
 
   end
 end

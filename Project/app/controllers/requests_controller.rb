@@ -1,6 +1,6 @@
 class RequestsController < ApplicationController
   def index
-    @requests = Request.all.order('date DESC')
+    @requests = Request.order('date DESC').page(params[:page])
   end
 
   def show
