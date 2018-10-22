@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   get 'search', to: 'pages#search'
   get 'about', to: 'pages#about'
+  get 'all_requests', to: 'requests#all_requests'
 
 
   root to: 'requests#index'

@@ -1,1 +1,11 @@
 <h1>All Requests</h1>
+
+<ul>
+    <% @requests.each do |request| %>
+     <li>
+      <%= link_to request.date, request %> 
+      <%= request.service_request.name %> @
+      <%= request.neighbourhood.name%>
+     </li>
+    <%end%>
+</ul>
