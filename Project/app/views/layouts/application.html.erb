@@ -12,12 +12,9 @@
   <body>
   <header>
   <h1> <%= link_to '311 Service Requests', root_path%> </h1>
-  <p><%= link_to 'About Us', about_path %>
-    <%= form_tag(results_search_index_path, method: "get") do %>
-  <%= label_tag(:q, "Search:") %>
-  <%= text_field_tag(:q) %>
-  <%= submit_tag("Search") %>
-<% end %>
+  <%= link_to 'Home', root_path %>
+  <%= link_to 'Search', search_path %>
+  <%= link_to 'About Us', about_path %>
   </header>
     <%= yield %>
         <footer>
