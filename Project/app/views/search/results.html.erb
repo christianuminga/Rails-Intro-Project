@@ -5,14 +5,23 @@
 <% else%>
 <%= paginate @requests%>
 
-<ul>
-
-<% @requests.each do |request|%>
-    <li><%= link_to request.date, request%>
-        <%= request.service_request.name %> @
-        <%= request.neighbourhood.name%> </li>
-<%end%>
-</ul>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Request</th>
+      <th scope="col">Neighbourhood</th>
+    </tr>
+  </thead>
+    <tbody>
+    <% @requests.each do |request|%>
+    <tr class="table-active">
+      <th scope="row"><%= link_to request.date, request %></th>
+      <td><%= request.service_request.name %></td>
+      <td><%= request.neighbourhood.name%></td>
+    </tr>
+    <%end%>
+</table>
 
 <%= paginate @requests%>
 
