@@ -25,6 +25,7 @@
         </li>
       </ul>
       <%= form_tag(results_search_index_path, method: "get") do %>
+        <%= select_tag"category", options_from_collection_for_select(ServiceArea.all, "id", "name"), :include_blank => "All" %>
         <%= text_field_tag(:q) %>
         <%= submit_tag("Search") %>
       <% end %>
